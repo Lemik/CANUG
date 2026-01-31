@@ -1,0 +1,9 @@
+title: Ukrainian Community in Nanaimo
+description: A small community site for Ukrainians in Nanaimo, Canada.
+theme: minima
+markdown: kramdown
+permalink: pretty
+url: ""
+baseurl: ""
+plugins:
+  - jekyll-feed
