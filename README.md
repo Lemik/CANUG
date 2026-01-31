@@ -24,6 +24,3 @@ baseurl: "/CANUG"
 ```
 
 Then in GitHub, go to Settings -> Pages and select the branch to deploy.
-
-
-jekyll serve --livereload
