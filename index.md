@@ -26,6 +26,30 @@ title: Home
 
 <section class="section">
   <h2>
+    <span data-lang="en">Upcoming Event</span>
+    <span data-lang="uk">Найближча подія</span>
+  </h2>
+  <img class="event-poster" src="{{ '/assets/img/3yow/A3_background_poster.jpg' | relative_url }}" alt="Event 2026 poster">
+  <p>
+    <span data-lang="en">
+      Event 2026 — Supporting Ukraine: Vehicles for Medical and Volunteer Units.
+      Join our charity event to help fund vehicles and support medical and
+      volunteer teams in Ukraine.
+    </span>
+    <span data-lang="uk">
+      Подія 2026 — Підтримка України: транспорт для медичних і волонтерських
+      підрозділів. Долучайтеся до благодійної події, щоб допомогти зібрати кошти
+      на транспорт і підтримку медичних та волонтерських команд в Україні.
+    </span>
+  </p>
+  <a class="cta" href="{{ '/events/' | relative_url }}">
+    <span data-lang="en">Learn more</span>
+    <span data-lang="uk">Дізнатися більше</span>
+  </a>
+</section>
+
+<section class="section">
+  <h2>
     <span data-lang="en">Who we are</span>
     <span data-lang="uk">Хто ми</span>
   </h2>
