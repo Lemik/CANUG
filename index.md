@@ -4,6 +4,14 @@ title: Home
 ---
 
 <section class="hero">
+  <div class="hero-teaser">
+    <span data-lang="en">Upcoming event 2026</span>
+    <span data-lang="uk">Найближча подія 2026</span>
+    <a href="{{ '/events/' | relative_url }}">
+      <span data-lang="en">Details</span>
+      <span data-lang="uk">Деталі</span>
+    </a>
+  </div>
   <h1>
     <span data-lang="en">Welcome to the Ukrainian Community in Nanaimo</span>
     <span data-lang="uk">Ласкаво просимо до української громади Нанаймо</span>
@@ -24,29 +32,35 @@ title: Home
   </a>
 </section>
 
-<section class="section">
+<section class="section alt">
   <h2>
     <span data-lang="en">Upcoming Event</span>
     <span data-lang="uk">Найближча подія</span>
   </h2>
-  <img class="event-poster" src="{{ '/assets/img/3yow/A3_background_poster.jpg' | relative_url }}" alt="Event 2026 poster">
-  <p>
-    <span data-lang="en">
-      Event 2026 — Supporting Ukraine: Vehicles for Medical and Volunteer Units.
-      Join our charity event to help fund vehicles and support medical and
-      volunteer teams in Ukraine.
-    </span>
-    <span data-lang="uk">
-      Подія 2026 — Підтримка України: транспорт для медичних і волонтерських
-      підрозділів. Долучайтеся до благодійної події, щоб допомогти зібрати кошти
-      на транспорт і підтримку медичних та волонтерських команд в Україні.
-    </span>
-  </p>
-  <a class="cta" href="{{ '/events/' | relative_url }}">
-    <span data-lang="en">Learn more</span>
-    <span data-lang="uk">Дізнатися більше</span>
-  </a>
+  <div class="event-card">
+    <img class="event-poster" src="{{ '/assets/img/3yow/A3_background_poster.jpg' | relative_url }}" alt="Event 2026 poster">
+    <div class="event-card-body">
+      <p>
+        <span data-lang="en">
+          Event 2026 — Supporting Ukraine: Vehicles for Medical and Volunteer Units.
+          Join our charity event to help fund vehicles and support medical and
+          volunteer teams in Ukraine.
+        </span>
+        <span data-lang="uk">
+          Подія 2026 — Підтримка України: транспорт для медичних і волонтерських
+          підрозділів. Долучайтеся до благодійної події, щоб допомогти зібрати кошти
+          на транспорт і підтримку медичних та волонтерських команд в Україні.
+        </span>
+      </p>
+      <a class="cta" href="{{ '/events/' | relative_url }}">
+        <span data-lang="en">Learn more</span>
+        <span data-lang="uk">Дізнатися більше</span>
+      </a>
+    </div>
+  </div>
 </section>
+
+<div class="section-divider"></div>
 
 <section class="section">
   <h2>
@@ -65,7 +79,9 @@ title: Home
   </p>
 </section>
 
-<section class="section">
+<div class="section-divider"></div>
+
+<section class="section alt">
   <h2>
     <span data-lang="en">Get involved</span>
     <span data-lang="uk">Долучайтеся</span>
