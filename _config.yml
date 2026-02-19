@@ -5,7 +5,7 @@ baseurl: ""
 
 author:
   name: "Canadian Association of the New Ukrainian Generation (CANUG)"
-  email: "info@canug.org"
+  email: "canug.org@gmail.com"
 
 markdown: kramdown
 permalink: pretty

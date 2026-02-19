@@ -489,14 +489,14 @@ title: About
           757 Chestnut Street<br>
           Nanaimo, BC V9S 2L1<br>
           Canada<br>
-          Email: <a href="mailto:info@canug.org">info@canug.org</a>
+          Email: <a href="mailto:canug.org@gmail.com">canug.org@gmail.com</a>
         </span>
         <span data-lang="uk">
           Канадська асоціація нової української генерації<br>
           757 Chestnut Street<br>
           Нанаймо, BC V9S 2L1<br>
           Канада<br>
-          Електронна пошта: <a href="mailto:info@canug.org">info@canug.org</a>
+          Електронна пошта: <a href="mailto:canug.org@gmail.com">canug.org@gmail.com</a>
         </span>
       </p>
     </li>

@@ -26,7 +26,7 @@ title: Contact
   <p>
     <span data-lang="en">Send a message to:</span>
     <span data-lang="uk">Надішліть повідомлення на:</span>
-    <a href="mailto:info@canug.org">info@canug.org</a>
+    <a href="mailto:canug.org@gmail.com">canug.org@gmail.com</a>
   </p>
   <p class="muted">
     <span data-lang="en">Replace this email with your official address.</span>
