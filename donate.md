@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Donate
+published: false
 ---
 
 <section class="hero">
