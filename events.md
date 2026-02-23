@@ -20,6 +20,36 @@ title: Events
 
 <section class="section">
   <h2>
+    <span data-lang="en">Event Report</span>
+    <span data-lang="uk">Звіт про подію</span>
+  </h2>
+  <div class="event-card">
+    <img class="event-poster" src="{{ '/assets/img/3yow/A3_background_poster.jpg' | relative_url }}" alt="Event report banner">
+    <div class="event-card-body">
+      <h3>
+        <span data-lang="en">Supporting Ukraine — "Four Years of Strength and Resilience"</span>
+        <span data-lang="uk">Звіт про подію на підтримку України: «Чотири роки сили та стійкості»</span>
+      </h3>
+      <p>
+        <span data-lang="en">
+          Concert, vehicle collection project presentation, and community gathering in support of Ukraine.
+        </span>
+        <span data-lang="uk">
+          Концерт, презентація проєкту зі збору транспорту та зустріч громади на підтримку України.
+        </span>
+      </p>
+      <a class="cta" href="{{ '/events/4thyofwar/' | relative_url }}">
+        <span data-lang="en">Read full report</span>
+        <span data-lang="uk">Читати повний звіт</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="section">
+  <h2>
     <span data-lang="en">Upcoming</span>
     <span data-lang="uk">Найближчі</span>
   </h2>
