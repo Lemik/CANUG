@@ -216,6 +216,53 @@ button:focus-visible {
   color: var(--muted);
 }
 
+.fundraising-banner {
+  background: linear-gradient(135deg, var(--brand) 0%, #1e40af 100%);
+  color: #fff;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 6px 18px rgba(31, 58, 138, 0.25);
+}
+
+.fundraising-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.fundraising-label {
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.fundraising-amount {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.fundraising-cta {
+  font-size: 0.9rem;
+  opacity: 0.95;
+  font-style: italic;
+}
+
+.fundraising-email {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.fundraising-email:hover,
+.fundraising-email:focus {
+  border-bottom-color: #fff;
+  text-decoration: none;
+}
+
 .site-footer {
   border-top: 1px solid var(--border);
   padding: 2rem 0;
@@ -259,6 +306,28 @@ button:focus-visible {
 .footer-title {
   margin: 0 0 0.5rem;
   font-weight: 700;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.social-fb {
+  background: #1877f2;
+  color: #fff;
+}
+
+.social-fb:hover,
+.social-fb:focus {
+  background: #166fe5;
+  color: #fff;
+  text-decoration: none;
 }
 
 .footer-note p {

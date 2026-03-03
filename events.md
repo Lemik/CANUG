@@ -53,6 +53,7 @@ title: Events
     <span data-lang="en">Upcoming</span>
     <span data-lang="uk">Найближчі</span>
   </h2>
+  {% include fundraising-banner.html %}
   <section class="section">
     <h3>Event 2026</h3>
     <h4>Supporting Ukraine: Vehicles for Medical and Volunteer Units</h4>

@@ -26,10 +26,6 @@ title: Home
       і разом святкуємо нашу культуру.
     </span>
   </p>
-  <a class="cta" href="{{ '/events/' | relative_url }}">
-    <span data-lang="en">See upcoming events</span>
-    <span data-lang="uk">Переглянути події</span>
-  </a>
 </section>
 
 <section class="section alt">
@@ -37,6 +33,7 @@ title: Home
     <span data-lang="en">Upcoming Event</span>
     <span data-lang="uk">Найближча подія</span>
   </h2>
+  {% include fundraising-banner.html %}
   <div class="event-card">
     <img class="event-poster" src="{{ '/assets/img/3yow/A3_background_poster.jpg' | relative_url }}" alt="Event 2026 poster">
     <div class="event-card-body">

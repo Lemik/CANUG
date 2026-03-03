@@ -7,6 +7,9 @@ author:
   name: "Canadian Association of the New Ukrainian Generation (CANUG)"
   email: "canug.org@gmail.com"
 
+# Vehicle fundraising campaign — update amount here
+fundraising_collected: "2,810"
+
 markdown: kramdown
 permalink: pretty
 theme: minima

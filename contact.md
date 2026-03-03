@@ -28,6 +28,12 @@ title: Contact
     <span data-lang="uk">Надішліть повідомлення на:</span>
     <a href="mailto:canug.org@gmail.com">canug.org@gmail.com</a>
   </p>
+  <p>
+    <a class="cta" href="https://www.facebook.com/search/top?q=canug" target="_blank" rel="noopener noreferrer">
+      <span data-lang="en">Facebook</span>
+      <span data-lang="uk">Facebook</span>
+    </a>
+  </p>
   <p class="muted">
     <span data-lang="en">Replace this email with your official address.</span>
     <span data-lang="uk">Замініть цю адресу на офіційну.</span>
