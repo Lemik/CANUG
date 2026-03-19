@@ -5,11 +5,11 @@ title: Home
 
 <section class="hero">
   <div class="hero-teaser">
-    <span data-lang="en">Upcoming event 2026</span>
-    <span data-lang="uk">Найближча подія 2026</span>
-    <a href="{{ '/events/' | relative_url }}">
-      <span data-lang="en">Details</span>
-      <span data-lang="uk">Деталі</span>
+    <span data-lang="en">Vehicle delivery fundraiser</span>
+    <span data-lang="uk">Збір на доставку авто</span>
+    <a href="{{ '/contact/' | relative_url }}">
+      <span data-lang="en">Contact</span>
+      <span data-lang="uk">Контакти</span>
     </a>
   </div>
   <h1>
@@ -30,29 +30,23 @@ title: Home
 
 <section class="section alt">
   <h2>
-    <span data-lang="en">Upcoming Event</span>
-    <span data-lang="uk">Найближча подія</span>
+    <span data-lang="en">Vehicle Update</span>
+    <span data-lang="uk">Оновлення щодо авто</span>
   </h2>
   {% include fundraising-banner.html %}
   <div class="event-card">
-    <img class="event-poster" src="{{ '/assets/img/3yow/A3_background_poster.jpg' | relative_url }}" alt="Event 2026 poster">
+    <img class="event-poster" src="{{ '/assets/img/car1.jpg' | relative_url }}" alt="Vehicle purchased for Ukraine support">
     <div class="event-card-body">
       <p>
         <span data-lang="en">
-          Event 2026 — Supporting Ukraine: Vehicles for Medical and Volunteer Units.
-          Join our charity event to help fund vehicles and support medical and
-          volunteer teams in Ukraine.
+          We got a car for Ukraine support and already spent $600 on it.
+          We are now looking for $1,500 in donations to deliver it to Ukraine.
         </span>
         <span data-lang="uk">
-          Подія 2026 — Підтримка України: транспорт для медичних і волонтерських
-          підрозділів. Долучайтеся до благодійної події, щоб допомогти зібрати кошти
-          на транспорт і підтримку медичних та волонтерських команд в Україні.
+          Ми придбали автомобіль для підтримки України і вже витратили на нього $600.
+          Зараз ми збираємо $1,500 пожертв, щоб доставити його в Україну.
         </span>
       </p>
-      <a class="cta" href="{{ '/events/' | relative_url }}">
-        <span data-lang="en">Learn more</span>
-        <span data-lang="uk">Дізнатися більше</span>
-      </a>
     </div>
   </div>
 </section>
