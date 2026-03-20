@@ -377,6 +377,11 @@ button:focus-visible {
   align-items: start;
 }
 
+.event-card-single {
+  grid-template-columns: minmax(0, 760px);
+  justify-content: center;
+}
+
 .event-card-body p {
   margin-top: 0;
 }

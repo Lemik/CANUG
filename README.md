@@ -25,5 +25,8 @@ baseurl: "/CANUG"
 
 Then in GitHub, go to Settings -> Pages and select the branch to deploy.
 
+## Community links
+- Facebook group: [CANUG | Nanaimo BC](https://www.facebook.com/profile.php?id=61588431459687)
+
 to start on localhost 
 jekyll serve --livereload --host 127.0.0.1 --port 4000
