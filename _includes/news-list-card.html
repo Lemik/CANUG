@@ -1,0 +1,17 @@
+<div class="event-card">
+  <img class="event-poster" src="{{ include.item.card_image | relative_url }}" alt="{{ include.item.title_en | xml_escape }}">
+  <div class="event-card-body">
+    <h3>
+      <span data-lang="en">{{ include.item.title_en }}</span>
+      <span data-lang="uk">{{ include.item.title_uk }}</span>
+    </h3>
+    <p>
+      <span data-lang="en">{{ include.item.excerpt_en }}</span>
+      <span data-lang="uk">{{ include.item.excerpt_uk }}</span>
+    </p>
+    <a class="cta" href="{{ include.item.url | relative_url }}">
+      <span data-lang="en">Read more</span>
+      <span data-lang="uk">Читати далі</span>
+    </a>
+  </div>
+</div>

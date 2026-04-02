@@ -1,8 +1,16 @@
 <header class="site-header">
   <div class="container header-content">
-    <a class="site-title" href="{{ '/' | relative_url }}">
-      <span data-lang="en">Ukrainian Community in Nanaimo</span>
-      <span data-lang="uk">Українська громада Нанаймо</span>
+    <a class="site-brand" href="{{ '/' | relative_url }}">
+      <img
+        class="site-logo"
+        src="{{ '/assets/img/avatar/logo.png' | relative_url }}"
+        alt="CANUG"
+        decoding="async"
+      >
+      <span class="site-title">
+        <span data-lang="en">Ukrainian Community in Nanaimo</span>
+        <span data-lang="uk">Українська громада Нанаймо</span>
+      </span>
     </a>
     <nav class="site-nav" aria-label="Primary">
       <a href="{{ '/' | relative_url }}">
@@ -13,9 +21,9 @@
         <span data-lang="en">About</span>
         <span data-lang="uk">Про нас</span>
       </a>
-      <a href="{{ '/events/' | relative_url }}">
-        <span data-lang="en">Events</span>
-        <span data-lang="uk">Події</span>
+      <a href="{{ '/news/' | relative_url }}">
+        <span data-lang="en">News</span>
+        <span data-lang="uk">Новини</span>
       </a>
       <a href="{{ '/contact/' | relative_url }}">
         <span data-lang="en">Contact</span>

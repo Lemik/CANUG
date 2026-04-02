@@ -3,7 +3,8 @@
 Small bilingual Jekyll site for the Ukrainian community in Nanaimo, Canada.
 
 ## Quick edits
-- Update text in `index.md`, `about.md`, `events.md`, `donate.md`, `contact.md`.
+- Update text in `index.md`, `about.md`, `news.md`, `donate.md`, `contact.md`.
+- Add or edit news posts in `_news/` (one Markdown file per item, with `date` and card fields; see existing files).
 - Replace the email address in `contact.md` and `_includes/footer.html`.
 - Replace the PayPal link in `donate.md` with your official URL.
 

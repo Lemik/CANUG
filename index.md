@@ -28,6 +28,19 @@ title: Home
   </p>
 </section>
 
+{% assign latest = site.news | sort: 'date' | reverse | first %}
+{% if latest %}
+<section class="section">
+  <h2>
+    <span data-lang="en">Latest news</span>
+    <span data-lang="uk">Останні новини</span>
+  </h2>
+  {% include news-list-card.html item=latest %}
+</section>
+
+<div class="section-divider"></div>
+{% endif %}
+
 <section class="section alt">
   <h2>
     <span data-lang="en">Vehicle Update</span>

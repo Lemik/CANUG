@@ -12,7 +12,15 @@ fundraising_collected: "2,810"
 
 markdown: kramdown
 permalink: pretty
-theme: minima
+
+collections:
+  news:
+    output: true
+    permalink: /news/:name/
+
+feed:
+  collections:
+    - news
 
 plugins:
   - jekyll-feed
