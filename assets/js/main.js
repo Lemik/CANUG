@@ -73,4 +73,130 @@
       });
     });
   }
+
+  const localServicesBoard = document.getElementById("local-services-board");
+  if (localServicesBoard) {
+    const keywordsInput = document.getElementById("local-services-keywords");
+    const locationSelect = document.getElementById("local-services-location");
+    const serviceSelect = document.getElementById("local-services-service");
+    const countEl = document.getElementById("local-services-count");
+    const emptyEl = document.getElementById("local-services-empty");
+    const cards = Array.from(localServicesBoard.querySelectorAll(".specialist-card"));
+
+    const formatLabel = (slug) =>
+      slug
+        .split(/\s+/)
+        .filter(Boolean)
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" ");
+
+    const collectFromAttr = (attr) => {
+      const out = new Set();
+      cards.forEach((card) => {
+        const raw = card.getAttribute(attr) || "";
+        raw.split("|").forEach((part) => {
+          const t = part.trim();
+          if (t) out.add(t);
+        });
+      });
+      return Array.from(out).sort((a, b) => a.localeCompare(b));
+    };
+
+    const fillSelect = (select, values) => {
+      select.innerHTML = "";
+      const allOpt = document.createElement("option");
+      allOpt.value = "";
+      allOpt.textContent = "All";
+      select.appendChild(allOpt);
+      values.forEach((v) => {
+        const opt = document.createElement("option");
+        opt.value = v;
+        opt.textContent = formatLabel(v);
+        select.appendChild(opt);
+      });
+    };
+
+    fillSelect(locationSelect, collectFromAttr("data-locations"));
+    fillSelect(serviceSelect, collectFromAttr("data-services"));
+
+    const getLang = () => document.documentElement.getAttribute("data-lang") || "en";
+
+    const applyLocalServicesFilter = () => {
+      const kw = (keywordsInput && keywordsInput.value) ? String(keywordsInput.value).trim().toLowerCase() : "";
+      const tokens = kw.split(/\s+/).filter(Boolean);
+      const loc = locationSelect && locationSelect.value ? String(locationSelect.value).trim().toLowerCase() : "";
+      const svc = serviceSelect && serviceSelect.value ? String(serviceSelect.value).trim().toLowerCase() : "";
+
+      let visible = 0;
+      cards.forEach((card) => {
+        const search = (card.getAttribute("data-search") || "").toLowerCase();
+        const locations = (card.getAttribute("data-locations") || "")
+          .split("|")
+          .map((s) => s.trim().toLowerCase());
+        const services = (card.getAttribute("data-services") || "")
+          .split("|")
+          .map((s) => s.trim().toLowerCase());
+
+        let match = true;
+        for (const t of tokens) {
+          if (!search.includes(t)) {
+            match = false;
+            break;
+          }
+        }
+        if (match && loc && !locations.includes(loc)) {
+          match = false;
+        }
+        if (match && svc && !services.includes(svc)) {
+          match = false;
+        }
+
+        card.classList.toggle("is-hidden", !match);
+        if (match) {
+          visible += 1;
+        }
+      });
+
+      const total = cards.length;
+      const lang = getLang();
+      if (countEl) {
+        countEl.textContent =
+          lang === "uk" ? `Показано ${visible} з ${total}` : `Showing ${visible} of ${total}`;
+      }
+      if (emptyEl) {
+        emptyEl.classList.toggle("is-hidden", visible !== 0);
+      }
+    };
+
+    if (keywordsInput) {
+      keywordsInput.addEventListener("input", applyLocalServicesFilter);
+    }
+    if (locationSelect) {
+      locationSelect.addEventListener("change", applyLocalServicesFilter);
+    }
+    if (serviceSelect) {
+      serviceSelect.addEventListener("change", applyLocalServicesFilter);
+    }
+
+    new MutationObserver(() => {
+      applyLocalServicesFilter();
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-lang"] });
+
+    applyLocalServicesFilter();
+
+    localServicesBoard.querySelectorAll(".specialist-card-trigger").forEach((trigger) => {
+      const dialogId = trigger.getAttribute("aria-controls");
+      const dialog = dialogId ? document.getElementById(dialogId) : null;
+      if (!dialog || typeof dialog.showModal !== "function") {
+        return;
+      }
+      trigger.addEventListener("click", () => {
+        document.body.classList.add("no-scroll");
+        dialog.showModal();
+      });
+      dialog.addEventListener("close", () => {
+        document.body.classList.remove("no-scroll");
+      });
+    });
+  }
 })();

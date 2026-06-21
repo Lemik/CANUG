@@ -1,0 +1,275 @@
+# Local Services Board — one entry per specialist.
+# - locations, services, keywords: used for search/filters; not shown on the card.
+# - logo: optional path under the site, e.g. /assets/img/local-services/acme.png
+
+- id: sample-legal
+  name_en: "Olena Kovalenko"
+  name_uk: "Олена Коваленко"
+  company: "Harbourview Legal"
+  logo:
+  phone: "+1 (250) 555-0101"
+  email: "contact@example.com"
+  website: "https://example.com"
+  social:
+    facebook: "https://www.facebook.com/"
+    instagram: ""
+    linkedin: "https://www.linkedin.com/"
+  locations:
+    - Nanaimo
+    - Lantzville
+  services:
+    - Legal consultation
+    - Notary
+  keywords:
+    - immigration
+    - contracts
+    - Ukrainian speaking
+
+- id: sample-trade
+  name_en: "Andriy Shevchenko"
+  name_uk: "Андрій Шевченко"
+  company: "Coastal Plumbing & Heating"
+  logo: "/assets/img/avatar/logo.png"
+  phone: "+1 (250) 555-0142"
+  email: "info@example.org"
+  website: ""
+  social:
+    facebook: ""
+    instagram: "https://www.instagram.com/"
+    linkedin: ""
+  locations:
+    - Nanaimo
+  services:
+    - Plumbing
+    - Heating
+  keywords:
+    - emergency
+    - repairs
+    - residential
+
+- id: island-accounting
+  name_en: "Iryna Melnyk"
+  name_uk: "Ірина Мельник"
+  company: "Island Bookkeeping Co."
+  logo:
+  phone: "+1 (250) 555-0200"
+  email: "hello@example.com"
+  website: "https://example.com"
+  social:
+    facebook: ""
+    instagram: ""
+    linkedin: ""
+  locations:
+    - Nanaimo
+    - Parksville
+  services:
+    - Accounting
+    - Tax preparation
+  keywords:
+    - small business
+    - T4
+    - GST
+
+- id: pacific-translation
+  name_en: "Mykola Petrenko"
+  name_uk: "Микола Петренко"
+  company: "Pacific Interpreting"
+  logo:
+  phone: "+1 (250) 555-0205"
+  email: "translate@example.com"
+  website: ""
+  social:
+    facebook: "https://www.facebook.com/"
+    instagram: ""
+    linkedin: ""
+  locations:
+    - Nanaimo
+    - Qualicum Beach
+  services:
+    - Translation
+    - Interpretation
+  keywords:
+    - Ukrainian
+    - English
+    - community
+
+- id: cedar-realty
+  name_en: "Yulia Bondarenko"
+  name_uk: "Юлія Бондаренко"
+  company: "Cedar Coast Realty"
+  logo:
+  phone: "+1 (250) 555-0210"
+  email: "homes@example.com"
+  website: "https://example.com"
+  social:
+    facebook: ""
+    instagram: "https://www.instagram.com/"
+    linkedin: "https://www.linkedin.com/"
+  locations:
+    - Nanaimo
+    - Lantzville
+  services:
+    - Real estate
+    - Newcomer housing
+  keywords:
+    - buy
+    - sell
+    - rent
+
+- id: strait-dental-hygiene
+  name_en: "Olha Sydorenko"
+  name_uk: "Ольга Сидоренко"
+  company: "Strait Smiles Hygiene"
+  logo:
+  phone: "+1 (250) 555-0215"
+  email: "smile@example.com"
+  website: ""
+  social:
+    facebook: ""
+    instagram: ""
+    linkedin: ""
+  locations:
+    - Nanaimo
+  services:
+    - Dental hygiene
+    - Teeth cleaning
+  keywords:
+    - kids
+    - adults
+    - family
+
+- id: vancouver-island-it
+  name_en: "Serhiy Kravchuk"
+  name_uk: "Сергій Кравчук"
+  company: "VI Island Tech"
+  logo: "/assets/img/avatar/logo.png"
+  phone: "+1 (250) 555-0220"
+  email: "support@example.com"
+  website: "https://example.com"
+  social:
+    facebook: "https://www.facebook.com/"
+    instagram: ""
+    linkedin: ""
+  locations:
+    - Nanaimo
+    - Parksville
+  services:
+    - IT support
+    - Home networks
+  keywords:
+    - Wi-Fi
+    - laptop
+    - seniors
+
+- id: maple-childcare
+  name_en: "Kateryna Lysenko"
+  name_uk: "Катерина Лисенко"
+  company: "Maple Day Home"
+  logo:
+  phone: "+1 (250) 555-0225"
+  email: "care@example.com"
+  website: ""
+  social:
+    facebook: "https://www.facebook.com/"
+    instagram: "https://www.instagram.com/"
+    linkedin: ""
+  locations:
+    - Nanaimo
+  services:
+    - Childcare
+    - After school
+  keywords:
+    - licensed
+    - Ukrainian songs
+    - 3+ years
+
+- id: nanaimo-builders
+  name_en: "Volodymyr Hlushko"
+  name_uk: "Володимир Глушко"
+  company: "Nanaimo Finish Carpentry"
+  logo:
+  phone: "+1 (250) 555-0230"
+  email: "build@example.com"
+  website: ""
+  social:
+    facebook: ""
+    instagram: ""
+    linkedin: ""
+  locations:
+    - Nanaimo
+    - Lantzville
+  services:
+    - Carpentry
+    - Decks
+  keywords:
+    - wood
+    - renovation
+    - repairs
+
+- id: pacific-bakehouse
+  name_en: "Svitlana Kovalchuk"
+  name_uk: "Світлана Ковальчук"
+  company: "Pacific Bakehouse (catering)"
+  logo:
+  phone: "+1 (250) 555-0235"
+  email: "orders@example.com"
+  website: "https://example.com"
+  social:
+    facebook: "https://www.facebook.com/"
+    instagram: "https://www.instagram.com/"
+    linkedin: ""
+  locations:
+    - Nanaimo
+    - Parksville
+  services:
+    - Catering
+    - Wedding cakes
+  keywords:
+    - perogy
+    - Ukrainian
+    - events
+
+- id: oceanside-automotive
+  name_en: "Dmytro Savchenko"
+  name_uk: "Дмитро Савченко"
+  company: "Oceanside Auto Care"
+  logo:
+  phone: "+1 (250) 555-0240"
+  email: "garage@example.com"
+  website: ""
+  social:
+    facebook: ""
+    instagram: ""
+    linkedin: "https://www.linkedin.com/"
+  locations:
+    - Nanaimo
+    - Parksville
+  services:
+    - Auto repair
+    - Tires
+  keywords:
+    - oil change
+    - winter tires
+    - SUV
+
+- id: baltic-bloom
+  name_en: "Marianna Ivasiv"
+  name_uk: "Мар'яна Івасів"
+  company: "Baltic Bloom Hair Studio"
+  logo:
+  phone: "+1 (250) 555-0245"
+  email: "style@example.com"
+  website: "https://example.com"
+  social:
+    facebook: ""
+    instagram: "https://www.instagram.com/"
+    linkedin: ""
+  locations:
+    - Nanaimo
+  services:
+    - Hair styling
+    - Colour
+  keywords:
+    - cut
+    - highlights
+    - appointments

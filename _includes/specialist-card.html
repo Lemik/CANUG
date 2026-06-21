@@ -1,0 +1,162 @@
+{% assign s = include.specialist %}
+{% assign loc_attr = s.locations | join: "|" | downcase | strip | default: "" %}
+{% assign svc_attr = s.services | join: "|" | downcase | strip | default: "" %}
+{% assign kw_joined = s.keywords | join: " " | downcase | default: "" %}
+{% capture search_src %}
+{{ s.name_en | default: "" }} {{ s.name_uk | default: "" }} {{ s.company | default: "" }} {{ s.phone | default: "" }} {{ s.email | default: "" }} {{ s.website | default: "" }} {% if s.social %}{{ s.social.facebook | default: "" }} {{ s.social.instagram | default: "" }} {{ s.social.linkedin | default: "" }}{% endif %} {% for l in s.locations %}{{ l }} {% endfor %} {% for v in s.services %}{{ v }} {% endfor %} {{ kw_joined }}
+{% endcapture %}
+{% assign data_search = search_src | downcase | strip_newlines | replace: "  ", " " | strip %}
+{% assign dialog_id = "specialist-dialog-" | append: s.id | replace: " ", "-" %}
+
+<article
+  class="specialist-card"
+  id="specialist-{{ s.id | xml_escape }}"
+  data-locations="{{ loc_attr | xml_escape }}"
+  data-services="{{ svc_attr | xml_escape }}"
+  data-search="{{ data_search | xml_escape }}"
+>
+  <button
+    type="button"
+    class="specialist-card-trigger"
+    aria-controls="{{ dialog_id | xml_escape }}"
+    aria-haspopup="dialog"
+  >
+    <span class="specialist-card-thumb" aria-hidden="true">
+      {% if s.logo and s.logo != "" %}
+      <img
+        src="{{ s.logo | relative_url }}"
+        alt=""
+        width="48"
+        height="48"
+        loading="lazy"
+        decoding="async"
+      >
+      {% else %}
+      <span class="specialist-card-thumb--placeholder"></span>
+      {% endif %}
+    </span>
+    <span class="specialist-card-preview">
+      <span class="specialist-card-name">
+        <span data-lang="en">{{ s.name_en | xml_escape }}</span>
+        <span data-lang="uk">{{ s.name_uk | xml_escape }}</span>
+      </span>
+      {% if s.company and s.company != "" %}
+      <span class="specialist-card-company">{{ s.company | xml_escape }}</span>
+      {% endif %}
+    </span>
+  </button>
+
+  <dialog class="specialist-dialog" id="{{ dialog_id | xml_escape }}" aria-labelledby="specialist-dialog-title-{{ s.id | xml_escape }}">
+    <div class="specialist-dialog-inner">
+      <div class="specialist-dialog-header">
+        {% if s.logo and s.logo != "" %}
+        <div class="specialist-dialog-logo">
+          <img
+            src="{{ s.logo | relative_url }}"
+            alt=""
+            width="96"
+            height="96"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+        {% endif %}
+        <h2 class="specialist-dialog-title" id="specialist-dialog-title-{{ s.id | xml_escape }}">
+          <span data-lang="en">{{ s.name_en | xml_escape }}</span>
+          <span data-lang="uk">{{ s.name_uk | xml_escape }}</span>
+        </h2>
+        {% if s.company and s.company != "" %}
+        <p class="specialist-dialog-company">{{ s.company | xml_escape }}</p>
+        {% endif %}
+      </div>
+
+      <div class="specialist-dialog-body">
+        {% if s.locations and s.locations.size > 0 %}
+        <div class="specialist-dialog-block">
+          <h3 class="specialist-dialog-h">
+            <span data-lang="en">Areas</span>
+            <span data-lang="uk">Регіони</span>
+          </h3>
+          <p class="specialist-dialog-text">{{ s.locations | join: ", " | xml_escape }}</p>
+        </div>
+        {% endif %}
+        {% if s.services and s.services.size > 0 %}
+        <div class="specialist-dialog-block">
+          <h3 class="specialist-dialog-h">
+            <span data-lang="en">Services</span>
+            <span data-lang="uk">Послуги</span>
+          </h3>
+          <p class="specialist-dialog-text">{{ s.services | join: ", " | xml_escape }}</p>
+        </div>
+        {% endif %}
+        {% if s.keywords and s.keywords.size > 0 %}
+        <div class="specialist-dialog-block">
+          <h3 class="specialist-dialog-h">
+            <span data-lang="en">Keywords</span>
+            <span data-lang="uk">Ключові слова</span>
+          </h3>
+          <p class="specialist-dialog-text">{{ s.keywords | join: ", " | xml_escape }}</p>
+        </div>
+        {% endif %}
+
+        <div class="specialist-dialog-block specialist-dialog-block--contact">
+          <h3 class="specialist-dialog-h">
+            <span data-lang="en">Contact</span>
+            <span data-lang="uk">Контакти</span>
+          </h3>
+          {% if s.phone and s.phone != "" %}
+          <p>
+            <a href="tel:{{ s.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' | xml_escape }}">{{ s.phone | xml_escape }}</a>
+          </p>
+          {% endif %}
+          {% if s.email and s.email != "" %}
+          <p>
+            <a href="mailto:{{ s.email | xml_escape }}">{{ s.email | xml_escape }}</a>
+          </p>
+          {% endif %}
+          {% if s.website and s.website != "" %}
+          <p>
+            <a href="{{ s.website | xml_escape }}" rel="noopener noreferrer" target="_blank">
+              <span data-lang="en">Website</span>
+              <span data-lang="uk">Вебсайт</span>
+            </a>
+          </p>
+          {% endif %}
+        </div>
+
+        {% if s.social and s.social.facebook and s.social.facebook != "" or s.social and s.social.instagram and s.social.instagram != "" or s.social and s.social.linkedin and s.social.linkedin != "" %}
+        <div class="specialist-dialog-block">
+          <h3 class="specialist-dialog-h">
+            <span data-lang="en">Social</span>
+            <span data-lang="uk">Соцмережі</span>
+          </h3>
+          <ul class="specialist-dialog-social">
+            {% if s.social and s.social.facebook and s.social.facebook != "" %}
+            <li>
+              <a href="{{ s.social.facebook | xml_escape }}" rel="noopener noreferrer" target="_blank">Facebook</a>
+            </li>
+            {% endif %}
+            {% if s.social and s.social.instagram and s.social.instagram != "" %}
+            <li>
+              <a href="{{ s.social.instagram | xml_escape }}" rel="noopener noreferrer" target="_blank">Instagram</a>
+            </li>
+            {% endif %}
+            {% if s.social and s.social.linkedin and s.social.linkedin != "" %}
+            <li>
+              <a href="{{ s.social.linkedin | xml_escape }}" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+
+      <form method="dialog" class="specialist-dialog-footer">
+        <button type="submit" class="specialist-dialog-close">
+          <span data-lang="en">Close</span>
+          <span data-lang="uk">Закрити</span>
+        </button>
+      </form>
+    </div>
+  </dialog>
+</article>
