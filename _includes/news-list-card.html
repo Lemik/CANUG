@@ -1,5 +1,7 @@
 <div class="event-card">
+  {% if include.item.card_image %}
   <img class="event-poster" src="{{ include.item.card_image | relative_url }}" alt="{{ include.item.title_en | xml_escape }}">
+  {% endif %}
   <div class="event-card-body">
     <h3>
       <span data-lang="en">{{ include.item.title_en }}</span>
