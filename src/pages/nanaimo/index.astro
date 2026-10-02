@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Bilingual from '../../components/Bilingual.astro';
+import { site } from '../../config';
+---
+
+<BaseLayout title="Nanaimo">
+  <section class="page-hero">
+    <div class="container">
+      <Bilingual heading>
+        <Fragment slot="en">Nanaimo</Fragment>
+        <Fragment slot="uk">Нанаймо</Fragment>
+      </Bilingual>
+      <Bilingual>
+        <Fragment slot="en">
+          Our home base on Vancouver Island — community life, local context, and how to connect in Nanaimo.
+        </Fragment>
+        <Fragment slot="uk">
+          Наша база на острові Ванкувер — життя громади, місцевий контекст і як долучитися в Нанаймо.
+        </Fragment>
+      </Bilingual>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container panel">
+      <Bilingual heading>
+        <Fragment slot="en">Ukrainian community in Nanaimo</Fragment>
+        <Fragment slot="uk">Українська громада в Нанаймо</Fragment>
+      </Bilingual>
+      <Bilingual>
+        <Fragment slot="en">
+          CANUG brings together Ukrainians and friends in Nanaimo, BC. We host gatherings, cultural celebrations, and mutual-support initiatives so newcomers and long-time residents feel connected.
+        </Fragment>
+        <Fragment slot="uk">
+          CANUG об’єднує українців і друзів у Нанаймо, БК. Ми організовуємо зустрічі, культурні свята та ініціативи взаємопідтримки, щоб новоприбулі й ті, хто вже давно тут, відчували зв’язок.
+        </Fragment>
+      </Bilingual>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container panel">
+      <Bilingual heading>
+        <Fragment slot="en">About the city</Fragment>
+        <Fragment slot="uk">Про місто</Fragment>
+      </Bilingual>
+      <Bilingual>
+        <Fragment slot="en">
+          Nanaimo sits on the east coast of Vancouver Island. It is a growing city with harbour views, parks, and a welcoming atmosphere for families building a new life in Canada. More local guides and resources will be added here over time.
+        </Fragment>
+        <Fragment slot="uk">
+          Нанаймо розташоване на східному узбережжі острова Ванкувер. Це місто, що розвивається, з видом на гавань, парками та гостинною атмосферою для сімей, які будують нове життя в Канаді. З часом тут з’явиться більше місцевих гідів і ресурсів.
+        </Fragment>
+      </Bilingual>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card-grid">
+        <div class="panel">
+          <Bilingual heading>
+            <Fragment slot="en">Get involved locally</Fragment>
+            <Fragment slot="uk">Долучайтеся на місці</Fragment>
+          </Bilingual>
+          <Bilingual>
+            <Fragment slot="en">
+              Watch Events and News for Nanaimo gatherings, or message us to volunteer.
+            </Fragment>
+            <Fragment slot="uk">
+              Стежте за Подіями та Новинами про зустрічі в Нанаймо, або напишіть нам, щоб волонтерити.
+            </Fragment>
+          </Bilingual>
+          <p>
+            <a class="cta" href="/events/">Events · <span lang="uk">Події</span></a>
+          </p>
+        </div>
+        <div class="panel">
+          <Bilingual heading>
+            <Fragment slot="en">Contact</Fragment>
+            <Fragment slot="uk">Контакти</Fragment>
+          </Bilingual>
+          <Bilingual>
+            <Fragment slot="en">
+              📍 {site.locationEn}<br />
+              Email <a href={`mailto:${site.email}`}>{site.email}</a>
+            </Fragment>
+            <Fragment slot="uk">
+              📍 {site.locationUk}<br />
+              Email <a href={`mailto:${site.email}`}>{site.email}</a>
+            </Fragment>
+          </Bilingual>
+          <p>
+            <a class="cta" href="/contact/">Contact page · <span lang="uk">Сторінка контактів</span></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Bilingual from '../../components/Bilingual.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('news');
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { data } = post;
+---
+
+<BaseLayout title={data.title_en}>
+  <article class="page-hero">
+    <div class="container">
+      <p class="card-meta">
+        <time datetime={data.date.toISOString()}>{formatDate(data.date, 'en')}</time>
+        <span aria-hidden="true"> · </span>
+        <time lang="uk" datetime={data.date.toISOString()}>{formatDate(data.date, 'uk')}</time>
+      </p>
+      <Bilingual heading>
+        <Fragment slot="en">{data.title_en}</Fragment>
+        <Fragment slot="uk">{data.title_uk}</Fragment>
+      </Bilingual>
+      {data.image && (
+        <img
+          src={data.image}
+          alt=""
+          style="margin: 1.25rem 0; border-radius: var(--radius); max-height: 420px; width: 100%; object-fit: cover;"
+          loading="eager"
+        />
+      )}
+      <div class="panel">
+        <Bilingual>
+          <Fragment slot="en"><p style="white-space: pre-line; margin: 0;">{data.body_en}</p></Fragment>
+          <Fragment slot="uk"><p style="white-space: pre-line; margin: 0;">{data.body_uk}</p></Fragment>
+        </Bilingual>
+      </div>
+      {
+        data.facebook_url && (
+          <p style="margin-top: 1rem;">
+            <a class="cta" href={data.facebook_url} target="_blank" rel="noopener noreferrer">
+              View on Facebook · <span lang="uk">Дивитися у Facebook</span>
+            </a>
+          </p>
+        )
+      }
+      <p style="margin-top: 1.25rem;">
+        <a class="cta" href="/news/">← All news · <span lang="uk">Усі новини</span></a>
+      </p>
+    </div>
+  </article>
+</BaseLayout>

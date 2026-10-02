@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Bilingual from './Bilingual.astro';
+import { formatMoney, progressPercent } from '../lib/content';
+import { site } from '../config';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const pct = progressPercent(data.raised, data.goal);
+const donateUrl = data.stripePaymentLink ?? site.stripePaymentLink;
+---
+
+<article class="card">
+  {data.image && <img class="card-media" src={data.image} alt="" loading="lazy" decoding="async" />}
+  <div class="card-body">
+    <h3 class="card-title">
+      <a href={`/projects/${project.id}/`}>{data.title_en}</a>
+    </h3>
+    <Bilingual>
+      <Fragment slot="en">{data.summary_en}</Fragment>
+      <Fragment slot="uk">{data.summary_uk}</Fragment>
+    </Bilingual>
+    {
+      data.goal != null && data.raised != null && (
+        <div class="progress">
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-fill" style={`width: ${pct}%`} />
+          </div>
+          <div class="progress-labels">
+            <span>
+              {formatMoney(data.raised, data.currency)} raised
+              <span lang="uk"> · зібрано</span>
+            </span>
+            <span>
+              Goal {formatMoney(data.goal, data.currency)}
+              <span lang="uk"> · ціль</span>
+            </span>
+          </div>
+        </div>
+      )
+    }
+    {
+      data.status === 'active' && (
+        <p style="margin-top: auto; margin-bottom: 0;">
+          <a class="cta" href={donateUrl} target="_blank" rel="noopener noreferrer">
+            Donate · <span lang="uk">Підтримати</span>
+          </a>
+        </p>
+      )
+    }
+  </div>
+</article>

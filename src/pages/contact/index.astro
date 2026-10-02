@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Bilingual from '../../components/Bilingual.astro';
+import { site } from '../../config';
+---
+
+<BaseLayout title="Contact">
+  <section class="page-hero">
+    <div class="container">
+      <Bilingual heading>
+        <Fragment slot="en">Contact us</Fragment>
+        <Fragment slot="uk">Контакти</Fragment>
+      </Bilingual>
+      <Bilingual>
+        <Fragment slot="en">Reach out with questions, event ideas, or to get involved.</Fragment>
+        <Fragment slot="uk">Пишіть із запитаннями, ідеями подій або щоб долучитися.</Fragment>
+      </Bilingual>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card-grid">
+        <div class="panel">
+          <Bilingual heading>
+            <Fragment slot="en">Email</Fragment>
+            <Fragment slot="uk">Електронна пошта</Fragment>
+          </Bilingual>
+          <p>
+            <a class="cta" href={`mailto:${site.email}`}>{site.email}</a>
+          </p>
+        </div>
+        <div class="panel">
+          <Bilingual heading>
+            <Fragment slot="en">Facebook</Fragment>
+            <Fragment slot="uk">Facebook</Fragment>
+          </Bilingual>
+          <Bilingual>
+            <Fragment slot="en">Follow our page for live updates and announcements.</Fragment>
+            <Fragment slot="uk">Слідкуйте за сторінкою для актуальних оновлень і оголошень.</Fragment>
+          </Bilingual>
+          <p>
+            <a
+              class="social-fb"
+              href={site.facebookPageUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open Facebook
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class="panel" style="margin-top: 1rem;">
+        <Bilingual heading>
+          <Fragment slot="en">Where we are</Fragment>
+          <Fragment slot="uk">Де ми</Fragment>
+        </Bilingual>
+        <Bilingual>
+          <Fragment slot="en">
+            📍 {site.locationEn}<br />
+            Activities are carried out across Canada.
+          </Fragment>
+          <Fragment slot="uk">
+            📍 {site.locationUk}<br />
+            Діяльність здійснюється по всій Канаді.
+          </Fragment>
+        </Bilingual>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

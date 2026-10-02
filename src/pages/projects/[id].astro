@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Bilingual from '../../components/Bilingual.astro';
+import { getCollection } from 'astro:content';
+import { formatMoney, progressPercent } from '../../lib/content';
+import { site } from '../../config';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const pct = progressPercent(data.raised, data.goal);
+const donateUrl = data.stripePaymentLink ?? site.stripePaymentLink;
+---
+
+<BaseLayout title={data.title_en}>
+  <article class="page-hero">
+    <div class="container">
+      <p class="card-meta">
+        {data.status === 'active' ? 'Active · Активний' : 'Completed · Завершено'}
+      </p>
+      <Bilingual heading>
+        <Fragment slot="en">{data.title_en}</Fragment>
+        <Fragment slot="uk">{data.title_uk}</Fragment>
+      </Bilingual>
+      {data.image && (
+        <img
+          src={data.image}
+          alt=""
+          style="margin: 1.25rem 0; border-radius: var(--radius); max-height: 420px; width: 100%; object-fit: cover;"
+          loading="eager"
+        />
+      )}
+      {
+        data.goal != null && data.raised != null && (
+          <div class="panel" style="margin-bottom: 1rem;">
+            <div class="progress">
+              <div class="progress-track" aria-hidden="true">
+                <div class="progress-fill" style={`width: ${pct}%`} />
+              </div>
+              <div class="progress-labels">
+                <span>
+                  {formatMoney(data.raised, data.currency)} raised
+                  <span lang="uk"> · зібрано</span>
+                </span>
+                <span>
+                  Goal {formatMoney(data.goal, data.currency)}
+                  <span lang="uk"> · ціль</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        )
+      }
+      <div class="panel">
+        <Bilingual>
+          <Fragment slot="en"><p style="white-space: pre-line; margin: 0;">{data.body_en}</p></Fragment>
+          <Fragment slot="uk"><p style="white-space: pre-line; margin: 0;">{data.body_uk}</p></Fragment>
+        </Bilingual>
+      </div>
+      {
+        data.status === 'active' && (
+          <p style="margin-top: 1.25rem;">
+            <a class="cta cta-accent" href={donateUrl} target="_blank" rel="noopener noreferrer">
+              Donate with Stripe · <span lang="uk">Підтримати через Stripe</span>
+            </a>
+          </p>
+        )
+      }
+      <p style="margin-top: 1.25rem;">
+        <a class="cta" href="/projects/">← All projects · <span lang="uk">Усі проєкти</span></a>
+      </p>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Bilingual from '../../components/Bilingual.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+import { activeProjects } from '../../lib/content';
+
+const projects = await getCollection('projects');
+const active = activeProjects(projects);
+const completed = projects.filter((p) => p.data.status === 'completed');
+---
+
+<BaseLayout title="Projects">
+  <section class="page-hero">
+    <div class="container">
+      <Bilingual heading>
+        <Fragment slot="en">What we are collecting for</Fragment>
+        <Fragment slot="uk">На що ми збираємо</Fragment>
+      </Bilingual>
+      <Bilingual>
+        <Fragment slot="en">Active campaigns and completed projects from the community.</Fragment>
+        <Fragment slot="uk">Активні кампанії та завершені проєкти громади.</Fragment>
+      </Bilingual>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <Bilingual heading>
+          <Fragment slot="en">Active projects</Fragment>
+          <Fragment slot="uk">Активні проєкти</Fragment>
+        </Bilingual>
+      </div>
+      {
+        active.length > 0 ? (
+          <div class="card-grid">
+            {active.map((project) => (
+              <ProjectCard project={project} />
+            ))}
+          </div>
+        ) : (
+          <div class="empty-state">
+            <Bilingual>
+              <Fragment slot="en">No active projects right now.</Fragment>
+              <Fragment slot="uk">Зараз немає активних проєктів.</Fragment>
+            </Bilingual>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  {
+    completed.length > 0 && (
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <Bilingual heading>
+              <Fragment slot="en">Completed</Fragment>
+              <Fragment slot="uk">Завершені</Fragment>
+            </Bilingual>
+          </div>
+          <div class="card-grid">
+            {completed.map((project) => (
+              <ProjectCard project={project} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>

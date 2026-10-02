@@ -1,0 +1,32 @@
+{% assign fb_url = site.facebook_page_url | default: "https://www.facebook.com/profile.php?id=61588431459687" %}
+{% assign fb_height = include.height | default: 720 %}
+
+<div class="fb-feed">
+  <div
+    class="fb-page"
+    data-href="{{ fb_url | xml_escape }}"
+    data-tabs="timeline"
+    data-width=""
+    data-height="{{ fb_height }}"
+    data-small-header="false"
+    data-adapt-container-width="true"
+    data-hide-cover="false"
+    data-show-facepile="true">
+    <blockquote cite="{{ fb_url | xml_escape }}" class="fb-xfbml-parse-ignore">
+      <a href="{{ fb_url | xml_escape }}">CANUG | Nanaimo BC</a>
+    </blockquote>
+  </div>
+  <noscript>
+    <p>
+      <span data-lang="en">Follow our updates on</span>
+      <span data-lang="uk">Слідкуйте за новинами на</span>
+      <a href="{{ fb_url | xml_escape }}" target="_blank" rel="noopener noreferrer">Facebook</a>.
+    </p>
+  </noscript>
+</div>
+
+{% unless include.skip_sdk %}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+  src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v23.0"></script>
+{% endunless %}

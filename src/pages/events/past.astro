@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Bilingual from '../../components/Bilingual.astro';
+import EventCard from '../../components/EventCard.astro';
+import { getCollection } from 'astro:content';
+import { pastEvents } from '../../lib/content';
+
+const past = pastEvents(await getCollection('events'));
+---
+
+<BaseLayout title="Past events">
+  <section class="page-hero">
+    <div class="container">
+      <Bilingual heading>
+        <Fragment slot="en">Past events</Fragment>
+        <Fragment slot="uk">Минулі події</Fragment>
+      </Bilingual>
+      <Bilingual>
+        <Fragment slot="en">Gatherings, fundraisers, and celebrations we have held together.</Fragment>
+        <Fragment slot="uk">Зустрічі, збори та святкування, які ми провели разом.</Fragment>
+      </Bilingual>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      {
+        past.length > 0 ? (
+          <div class="card-grid">
+            {past.map((event) => (
+              <EventCard event={event} />
+            ))}
+          </div>
+        ) : (
+          <div class="empty-state">
+            <Bilingual>
+              <Fragment slot="en">Past events will appear here.</Fragment>
+              <Fragment slot="uk">Минулі події з’являться тут.</Fragment>
+            </Bilingual>
+          </div>
+        )
+      }
+      <p style="margin-top: 1.25rem;">
+        <a class="cta" href="/events/">← Upcoming events · <span lang="uk">Найближчі події</span></a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

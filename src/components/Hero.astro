@@ -1,0 +1,49 @@
+---
+import Bilingual from './Bilingual.astro';
+
+interface Props {
+  brand?: string;
+  ctaHref?: string;
+  ctaEn?: string;
+  ctaUk?: string;
+  secondaryHref?: string;
+  secondaryEn?: string;
+  secondaryUk?: string;
+}
+
+const {
+  brand = 'CANUG',
+  ctaHref = '/donate/',
+  ctaEn = 'Donate',
+  ctaUk = 'Підтримати',
+  secondaryHref = '/about/',
+  secondaryEn = 'About us',
+  secondaryUk = 'Про нас',
+} = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-brand">{brand}</p>
+    <Bilingual>
+      <Fragment slot="en">
+        <slot name="en" />
+      </Fragment>
+      <Fragment slot="uk">
+        <slot name="uk" />
+      </Fragment>
+    </Bilingual>
+    <div class="hero-actions">
+      <a class="cta cta-accent" href={ctaHref}>
+        <span>{ctaEn}</span>
+        <span aria-hidden="true">·</span>
+        <span lang="uk">{ctaUk}</span>
+      </a>
+      <a class="cta cta-ghost" href={secondaryHref}>
+        <span>{secondaryEn}</span>
+        <span aria-hidden="true">·</span>
+        <span lang="uk">{secondaryUk}</span>
+      </a>
+    </div>
+  </div>
+</section>

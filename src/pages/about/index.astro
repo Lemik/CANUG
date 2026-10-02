@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Bilingual from '../../components/Bilingual.astro';
+import { site } from '../../config';
+---
+
+<BaseLayout title="About">
+  <section class="page-hero">
+    <div class="container">
+      <Bilingual heading>
+        <Fragment slot="en">About our community</Fragment>
+        <Fragment slot="uk">Про нашу громаду</Fragment>
+      </Bilingual>
+      <Bilingual>
+        <Fragment slot="en">
+          We are a welcoming community dedicated to supporting Ukrainians in Nanaimo and strengthening cultural ties.
+        </Fragment>
+        <Fragment slot="uk">
+          Ми гостинна громада, яка підтримує українців у Нанаймо та зміцнює культурні зв'язки.
+        </Fragment>
+      </Bilingual>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container panel">
+      <Bilingual heading>
+        <Fragment slot="en">{site.title} (CANUG)</Fragment>
+        <Fragment slot="uk">Канадська асоціація нової української генерації (CANUG)</Fragment>
+      </Bilingual>
+      <Bilingual>
+        <Fragment slot="en">{site.description}</Fragment>
+        <Fragment slot="uk">{site.descriptionUk}</Fragment>
+      </Bilingual>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container panel">
+      <Bilingual heading>
+        <Fragment slot="en">Who we are</Fragment>
+        <Fragment slot="uk">Хто ми</Fragment>
+      </Bilingual>
+      <Bilingual>
+        <Fragment slot="en">
+          The Canadian Association of the New Ukrainian Generation is a non-profit organization registered in British Columbia, Canada, operating in accordance with the BC Societies Act. We support the Ukrainian community and foster the development of a new Ukrainian generation in Canada.
+        </Fragment>
+        <Fragment slot="uk">
+          Канадська асоціація нової української генерації — неприбуткова організація, зареєстрована в Британській Колумбії, Канада, що діє відповідно до Закону Британської Колумбії про товариства (BC Societies Act). Ми підтримуємо українську громаду та розвиток нової української генерації в Канаді.
+        </Fragment>
+      </Bilingual>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <Bilingual heading>
+          <Fragment slot="en">What we do</Fragment>
+          <Fragment slot="uk">Що ми робимо</Fragment>
+        </Bilingual>
+      </div>
+      <div class="card-grid cols-3">
+        <div class="panel">
+          <h3>Community support · <span lang="uk">Підтримка громади</span></h3>
+          <Bilingual>
+            <Fragment slot="en">
+              Informational and community support for Ukrainians in Canada, helping with social and employment integration.
+            </Fragment>
+            <Fragment slot="uk">
+              Інформаційна та громадська підтримка українців у Канаді для соціальної та професійної інтеграції.
+            </Fragment>
+          </Bilingual>
+        </div>
+        <div class="panel">
+          <h3>Education · <span lang="uk">Освіта</span></h3>
+          <Bilingual>
+            <Fragment slot="en">
+              Programs and events on labour rights, employment, social protection, and life in Canada.
+            </Fragment>
+            <Fragment slot="uk">
+              Програми та заходи про трудові права, працевлаштування, соціальний захист і життя в Канаді.
+            </Fragment>
+          </Bilingual>
+        </div>
+        <div class="panel">
+          <h3>Culture · <span lang="uk">Культура</span></h3>
+          <Bilingual>
+            <Fragment slot="en">
+              We preserve and promote Ukrainian culture through events and engagement with Canadian society.
+            </Fragment>
+            <Fragment slot="uk">
+              Зберігаємо та популяризуємо українську культуру через події та взаємодію з канадським суспільством.
+            </Fragment>
+          </Bilingual>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container panel">
+      <Bilingual heading>
+        <Fragment slot="en">Our mission</Fragment>
+        <Fragment slot="uk">Наша місія</Fragment>
+      </Bilingual>
+      <Bilingual>
+        <Fragment slot="en">
+          Support the Ukrainian community in Canada by promoting social, cultural, and economic integration, protecting rights, and fostering the new Ukrainian generation.
+        </Fragment>
+        <Fragment slot="uk">
+          Підтримувати українську громаду в Канаді, сприяти соціальній, культурній та економічній інтеграції, захищати права та розвивати нову українську генерацію.
+        </Fragment>
+      </Bilingual>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container panel">
+      <Bilingual heading>
+        <Fragment slot="en">Our principles</Fragment>
+        <Fragment slot="uk">Наші принципи</Fragment>
+      </Bilingual>
+      <Bilingual>
+        <Fragment slot="en">
+          <ul class="prose-list">
+            <li>Non-profit operation</li>
+            <li>Transparency and accountability</li>
+            <li>Community-focused work</li>
+            <li>Compliance with Canadian law</li>
+          </ul>
+        </Fragment>
+        <Fragment slot="uk">
+          <ul class="prose-list">
+            <li>Неприбуткова діяльність</li>
+            <li>Прозорість і підзвітність</li>
+            <li>Орієнтація на потреби громади</li>
+            <li>Дотримання законодавства Канади</li>
+          </ul>
+        </Fragment>
+      </Bilingual>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container panel">
+      <Bilingual heading>
+        <Fragment slot="en">Legal information</Fragment>
+        <Fragment slot="uk">Правова інформація</Fragment>
+      </Bilingual>
+      <Bilingual>
+        <Fragment slot="en">
+          {site.title}<br />
+          Non-profit organization registered in British Columbia, Canada<br />
+          Incorporation Number: {site.incorporationNumber}<br />
+          📍 {site.locationEn} — activities across Canada
+        </Fragment>
+        <Fragment slot="uk">
+          Канадська асоціація нової української генерації<br />
+          Неприбуткова організація, зареєстрована у Британській Колумбії, Канада<br />
+          Реєстраційний номер: {site.incorporationNumber}<br />
+          📍 {site.locationUk} — діяльність по всій Канаді
+        </Fragment>
+      </Bilingual>
+      <p style="margin-top: 1rem; margin-bottom: 0;">
+        <a class="cta" href="/contact/">Contact · <span lang="uk">Контакти</span></a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

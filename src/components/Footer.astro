@@ -1,0 +1,47 @@
+---
+import { site } from '../config';
+import Bilingual from './Bilingual.astro';
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <img
+        class="footer-logo"
+        src="/img/avatar/logo.png"
+        alt={site.shortName}
+        width="72"
+        height="72"
+        decoding="async"
+      />
+      <p><strong>{site.shortName}</strong></p>
+      <Bilingual class="bilingual-stacked">
+        <Fragment slot="en">
+          Stay in touch — email{' '}
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </Fragment>
+        <Fragment slot="uk">
+          Зв'язок — електронна пошта{' '}
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </Fragment>
+      </Bilingual>
+    </div>
+
+    <div>
+      <Bilingual heading>
+        <Fragment slot="en">Follow us</Fragment>
+        <Fragment slot="uk">Слідкуйте за нами</Fragment>
+      </Bilingual>
+      <p>
+        <a
+          class="social-fb"
+          href={site.facebookPageUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Facebook
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Bilingual from '../../components/Bilingual.astro';
+import { getCollection } from 'astro:content';
+import { formatDate, pastEvents } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map((event) => ({
+    params: { id: event.id },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+const { data } = event;
+const isPast = pastEvents([event]).length > 0;
+---
+
+<BaseLayout title={data.title_en}>
+  <article class="page-hero">
+    <div class="container">
+      <p class="card-meta">
+        <time datetime={data.date.toISOString()}>{formatDate(data.date, 'en')}</time>
+        <span aria-hidden="true"> · </span>
+        <time lang="uk" datetime={data.date.toISOString()}>{formatDate(data.date, 'uk')}</time>
+      </p>
+      <Bilingual heading>
+        <Fragment slot="en">{data.title_en}</Fragment>
+        <Fragment slot="uk">{data.title_uk}</Fragment>
+      </Bilingual>
+      {
+        (data.venue_en || data.venue_uk) && (
+          <Bilingual>
+            <Fragment slot="en">{data.venue_en}</Fragment>
+            <Fragment slot="uk">{data.venue_uk}</Fragment>
+          </Bilingual>
+        )
+      }
+      {data.image && (
+        <img
+          src={data.image}
+          alt={data.title_en}
+          style="margin: 1.25rem 0; border-radius: var(--radius); max-height: 760px; width: auto; max-width: 100%;"
+          loading="eager"
+        />
+      )}
+      <div class="panel">
+        <Bilingual>
+          <Fragment slot="en"><p style="white-space: pre-line; margin: 0;">{data.body_en}</p></Fragment>
+          <Fragment slot="uk"><p style="white-space: pre-line; margin: 0;">{data.body_uk}</p></Fragment>
+        </Bilingual>
+      </div>
+      {
+        data.facebook_url && (
+          <p style="margin-top: 1rem;">
+            <a class="social-fb" href={data.facebook_url} target="_blank" rel="noopener noreferrer">
+              View on Facebook · <span lang="uk">Дивитися у Facebook</span>
+            </a>
+          </p>
+        )
+      }
+      <p style="margin-top: 1.25rem;">
+        {
+          isPast ? (
+            <a class="cta" href="/events/past/">← Past events · <span lang="uk">Минулі події</span></a>
+          ) : (
+            <a class="cta" href="/events/">← All events · <span lang="uk">Усі події</span></a>
+          )
+        }
+      </p>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Bilingual from '../../components/Bilingual.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import FacebookFeed from '../../components/FacebookFeed.astro';
+import { getCollection } from 'astro:content';
+import { sortByDateDesc } from '../../lib/content';
+import { site } from '../../config';
+
+const posts = sortByDateDesc(await getCollection('news'));
+---
+
+<BaseLayout title="News">
+  <section class="page-hero">
+    <div class="container">
+      <h1>News <span lang="uk">(Новини)</span></h1>
+      <Bilingual class="bilingual-stacked">
+        <Fragment slot="en">Updates and announcements from CANUG.</Fragment>
+        <Fragment slot="uk">Оновлення та оголошення CANUG.</Fragment>
+      </Bilingual>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      {
+        posts.length > 0 ? (
+          <div class="card-grid">
+            {posts.map((post) => (
+              <NewsCard post={post} />
+            ))}
+          </div>
+        ) : (
+          <div class="empty-state">
+            <Bilingual>
+              <Fragment slot="en">No news posts yet.</Fragment>
+              <Fragment slot="uk">Новин поки немає.</Fragment>
+            </Bilingual>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>From Facebook</h2>
+        <Bilingual class="bilingual-stacked">
+          <Fragment slot="en">
+            Live posts from{' '}
+            <a href={site.facebookPageUrl} target="_blank" rel="noopener noreferrer">our Facebook page</a>.
+          </Fragment>
+          <Fragment slot="uk">
+            Актуальні дописи з{' '}
+            <a href={site.facebookPageUrl} target="_blank" rel="noopener noreferrer">нашої сторінки Facebook</a>.
+          </Fragment>
+        </Bilingual>
+      </div>
+      <FacebookFeed height={1000} />
+    </div>
+  </section>
+</BaseLayout>

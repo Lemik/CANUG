@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Bilingual from '../components/Bilingual.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import EventCard from '../components/EventCard.astro';
+import { getCollection } from 'astro:content';
+import { featuredProject, upcomingEvents } from '../lib/content';
+import { site } from '../config';
+
+const projects = await getCollection('projects');
+const events = await getCollection('events');
+const featured = featuredProject(projects);
+const nextEvents = upcomingEvents(events).slice(0, 2);
+---
+
+<BaseLayout>
+  <Hero>
+    <Fragment slot="en">
+      We connect Ukrainians and friends in Nanaimo, support newcomers, and celebrate our culture together.
+    </Fragment>
+    <Fragment slot="uk">
+      Ми об'єднуємо українців та друзів у Нанаймо, підтримуємо новоприбулих і разом святкуємо нашу культуру.
+    </Fragment>
+  </Hero>
+
+  <section class="section">
+    <div class="container">
+      <div class="appeal">
+        <h2>
+          We're collecting generators &amp; gas heaters
+          <span lang="uk" class="appeal-uk">Збираємо генератори та газові обігрівачі</span>
+        </h2>
+        <Bilingual class="bilingual-stacked">
+          <Fragment slot="en">
+            Do you have an old or unused generator or gas heater? Please don't throw it away — donate it to us. Contact us and we'll arrange pickup or drop-off.
+          </Fragment>
+          <Fragment slot="uk">
+            Маєте старий або непотрібний генератор чи газовий обігрівач? Не викидайте його — передайте нам. Звʼяжіться з нами, і ми домовимося про забір або передачу.
+          </Fragment>
+        </Bilingual>
+        <div class="appeal-gallery">
+          <img src="/img/appeal/generator-yardworks.jpg" alt="Donated Yardworks 3500 W portable generator" loading="lazy" decoding="async" width="1024" height="768" />
+          <img src="/img/appeal/generator-portable.jpg" alt="Donated yellow portable generator" loading="lazy" decoding="async" width="1024" height="768" />
+          <img src="/img/appeal/diesel-heater.jpg" alt="Donated portable diesel heater" loading="lazy" decoding="async" width="1024" height="768" />
+        </div>
+        <p class="appeal-actions">
+          <a
+            class="cta cta-accent"
+            href={`mailto:${site.email}?subject=${encodeURIComponent('Generator / gas heater donation')}`}
+          >
+            Email us · <span lang="uk">Напишіть нам</span>
+          </a>
+          <a class="cta" href="/contact/">Contact · <span lang="uk">Контакти</span></a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <Bilingual heading>
+          <Fragment slot="en">What we do</Fragment>
+          <Fragment slot="uk">Що ми робимо</Fragment>
+        </Bilingual>
+        <Bilingual>
+          <Fragment slot="en">
+            CANUG is a volunteer-led non-profit supporting the Ukrainian community through mutual aid, education, and cultural life in Nanaimo and across Canada.
+          </Fragment>
+          <Fragment slot="uk">
+            CANUG — волонтерська неприбуткова організація, що підтримує українську громаду через взаємодопомогу, освіту та культурне життя в Нанаймо та по всій Канаді.
+          </Fragment>
+        </Bilingual>
+      </div>
+      <p>
+        <a class="cta" href="/about/">About us · <span lang="uk">Про нас</span></a>
+      </p>
+    </div>
+  </section>
+
+  {
+    featured && (
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <Bilingual heading>
+              <Fragment slot="en">Featured project</Fragment>
+              <Fragment slot="uk">Актуальний проєкт</Fragment>
+            </Bilingual>
+          </div>
+          <div class="card-grid">
+            <ProjectCard project={featured} />
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <Bilingual heading>
+          <Fragment slot="en">Upcoming events</Fragment>
+          <Fragment slot="uk">Найближчі події</Fragment>
+        </Bilingual>
+      </div>
+      {
+        nextEvents.length > 0 ? (
+          <div class="card-grid">
+            {nextEvents.map((event) => (
+              <EventCard event={event} />
+            ))}
+          </div>
+        ) : (
+          <div class="empty-state">
+            <Bilingual>
+              <Fragment slot="en">No upcoming events listed yet — check News or Facebook for the latest.</Fragment>
+              <Fragment slot="uk">Найближчих подій поки немає — дивіться Новини або Facebook.</Fragment>
+            </Bilingual>
+          </div>
+        )
+      }
+      <p style="margin-top: 1.25rem;">
+        <a class="cta cta-accent" href="/events/">All events · <span lang="uk">Усі події</span></a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="feature-strip">
+        <Bilingual heading>
+          <Fragment slot="en">Get involved</Fragment>
+          <Fragment slot="uk">Долучайтеся</Fragment>
+        </Bilingual>
+        <Bilingual>
+          <Fragment slot="en">
+            Join gatherings, volunteer, share your story, or support a project. Everyone who wants to help is welcome.
+          </Fragment>
+          <Fragment slot="uk">
+            Приєднуйтесь до зустрічей, волонтерте, діліться історією або підтримайте проєкт. Ми раді кожному, хто хоче допомогти.
+          </Fragment>
+        </Bilingual>
+        <p style="margin-top: 1rem; margin-bottom: 0;">
+          <a class="cta cta-accent" href="/contact/">Contact · <span lang="uk">Контакти</span></a>
+          {' '}
+          <a class="cta cta-ghost" href="/donate/">Donate · <span lang="uk">Підтримати</span></a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

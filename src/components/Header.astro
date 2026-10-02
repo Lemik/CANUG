@@ -1,0 +1,82 @@
+---
+import { navItems, site } from '../config';
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="site-brand" href="/">
+      <img
+        class="site-logo"
+        src="/img/avatar/logo.png"
+        alt={site.shortName}
+        width="48"
+        height="48"
+        decoding="async"
+      />
+      <span class="site-brand-text">
+        <span class="site-brand-name">{site.shortName}</span>
+        <span class="site-brand-tag">Ukrainian Community · Nanaimo</span>
+      </span>
+    </a>
+
+    <button
+      type="button"
+      class="nav-toggle"
+      aria-expanded="false"
+      aria-controls="primary-nav"
+      data-nav-toggle
+    >
+      <span class="visually-hidden">Menu</span>
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+    </button>
+
+    <nav class="site-nav" id="primary-nav" aria-label="Primary" data-nav>
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            aria-current={pathname === item.href || pathname.startsWith(item.href) ? 'page' : undefined}
+          >
+            <span>{item.en}</span>
+            <span class="nav-label-uk">{item.uk}</span>
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const nav = document.querySelector('[data-nav]');
+
+  if (toggle instanceof HTMLButtonElement && nav instanceof HTMLElement) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+
+    nav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>

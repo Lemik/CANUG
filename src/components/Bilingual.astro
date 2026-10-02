@@ -1,0 +1,20 @@
+---
+interface Props {
+  class?: string;
+  heading?: boolean;
+}
+
+const { class: className = '', heading = false } = Astro.props;
+const classes = ['bilingual', heading ? 'bilingual-heading' : '', className]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<div class={classes}>
+  <div lang="en" class="bilingual-en">
+    <slot name="en" />
+  </div>
+  <div lang="uk" class="bilingual-uk">
+    <slot name="uk" />
+  </div>
+</div>

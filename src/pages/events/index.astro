@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Bilingual from '../../components/Bilingual.astro';
+import EventCard from '../../components/EventCard.astro';
+import { getCollection } from 'astro:content';
+import { upcomingEvents, pastEvents } from '../../lib/content';
+
+const events = await getCollection('events');
+const upcoming = upcomingEvents(events);
+const past = pastEvents(events);
+---
+
+<BaseLayout title="Events">
+  <section class="page-hero">
+    <div class="container">
+      <h1>Events <span lang="uk">(Події)</span></h1>
+      <Bilingual class="bilingual-stacked">
+        <Fragment slot="en">Community gatherings, fundraisers, and celebrations.</Fragment>
+        <Fragment slot="uk">Зустрічі громади, збори та святкування.</Fragment>
+      </Bilingual>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      {
+        upcoming.length > 0 ? (
+          <div class="card-grid">
+            {upcoming.map((event) => (
+              <EventCard event={event} />
+            ))}
+          </div>
+        ) : (
+          <div class="empty-state">
+            <Bilingual>
+              <Fragment slot="en">No upcoming events yet. Follow us on Facebook for announcements.</Fragment>
+              <Fragment slot="uk">Найближчих подій поки немає. Слідкуйте за Facebook для оголошень.</Fragment>
+            </Bilingual>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  {
+    past.length > 0 && (
+      <section class="section">
+        <div class="container">
+          <a class="cta" href="/events/past/">
+            Past events · <span lang="uk">Минулі події</span> →
+          </a>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>

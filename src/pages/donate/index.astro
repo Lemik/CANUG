@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Bilingual from '../../components/Bilingual.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+import { activeProjects } from '../../lib/content';
+import { site } from '../../config';
+
+const active = activeProjects(await getCollection('projects'));
+---
+
+<BaseLayout title="Donate">
+  <section class="page-hero">
+    <div class="container">
+      <Bilingual heading>
+        <Fragment slot="en">Support our community</Fragment>
+        <Fragment slot="uk">Підтримайте громаду</Fragment>
+      </Bilingual>
+      <Bilingual>
+        <Fragment slot="en">
+          Your contribution helps run events, welcome newcomers, and deliver aid projects — including vehicles for Ukraine.
+        </Fragment>
+        <Fragment slot="uk">
+          Ваш внесок допомагає проводити події, підтримувати новоприбулих і реалізовувати проєкти допомоги — зокрема доставку автомобілів в Україну.
+        </Fragment>
+      </Bilingual>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="feature-strip">
+        <Bilingual heading>
+          <Fragment slot="en">Donate securely with Stripe</Fragment>
+          <Fragment slot="uk">Безпечна пожертва через Stripe</Fragment>
+        </Bilingual>
+        <Bilingual>
+          <Fragment slot="en">
+            You will be taken to Stripe’s hosted checkout. Replace the placeholder Payment Link in site config when your live link is ready.
+          </Fragment>
+          <Fragment slot="uk">
+            Вас буде перенаправлено на захищену сторінку Stripe. Замініть тимчасове Payment Link у конфігурації сайту, коли буде готове робоче посилання.
+          </Fragment>
+        </Bilingual>
+        <p style="margin-top: 1rem; margin-bottom: 0;">
+          <a
+            class="cta cta-accent"
+            href={site.stripePaymentLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Donate now · <span lang="uk">Підтримати зараз</span>
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <Bilingual heading>
+          <Fragment slot="en">How donations help</Fragment>
+          <Fragment slot="uk">Як допомагають внески</Fragment>
+        </Bilingual>
+      </div>
+      <div class="panel">
+        <Bilingual>
+          <Fragment slot="en">
+            <ul class="prose-list">
+              <li>Community gatherings and cultural events</li>
+              <li>Support for newcomers in Nanaimo</li>
+              <li>Materials, outreach, and project logistics</li>
+              <li>Vehicle preparation and delivery to Ukraine</li>
+            </ul>
+          </Fragment>
+          <Fragment slot="uk">
+            <ul class="prose-list">
+              <li>Зустрічі громади та культурні події</li>
+              <li>Підтримка новоприбулих у Нанаймо</li>
+              <li>Матеріали, комунікації та логістика проєктів</li>
+              <li>Підготовка та доставка автомобілів в Україну</li>
+            </ul>
+          </Fragment>
+        </Bilingual>
+      </div>
+    </div>
+  </section>
+
+  {
+    active.length > 0 && (
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <Bilingual heading>
+              <Fragment slot="en">Give to a project</Fragment>
+              <Fragment slot="uk">Підтримати проєкт</Fragment>
+            </Bilingual>
+          </div>
+          <div class="card-grid">
+            {active.map((project) => (
+              <ProjectCard project={project} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section">
+    <div class="container panel">
+      <Bilingual>
+        <Fragment slot="en">
+          Prefer email? Write to <a href={`mailto:${site.email}`}>{site.email}</a> about e-transfers or other ways to help.
+        </Fragment>
+        <Fragment slot="uk">
+          Хочете написати? Звертайтеся на <a href={`mailto:${site.email}`}>{site.email}</a> щодо e-transfer або інших способів допомоги.
+        </Fragment>
+      </Bilingual>
+    </div>
+  </section>
+</BaseLayout>
