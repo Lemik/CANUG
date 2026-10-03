@@ -2,12 +2,14 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Bilingual from '../../components/Bilingual.astro';
 import NewsCard from '../../components/NewsCard.astro';
+import EventCard from '../../components/EventCard.astro';
 import FacebookFeed from '../../components/FacebookFeed.astro';
 import { getCollection } from 'astro:content';
-import { sortByDateDesc } from '../../lib/content';
+import { sortByDateDesc, upcomingEvents } from '../../lib/content';
 import { site } from '../../config';
 
 const posts = sortByDateDesc(await getCollection('news'));
+const upcoming = upcomingEvents(await getCollection('events'));
 ---
 
 <BaseLayout title="News">
@@ -20,6 +22,23 @@ const posts = sortByDateDesc(await getCollection('news'));
       </Bilingual>
     </div>
   </section>
+
+  {
+    upcoming.length > 0 && (
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Upcoming events <span lang="uk">(Найближчі події)</span></h2>
+          </div>
+          <div class="card-grid">
+            {upcoming.map((event) => (
+              <EventCard event={event} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   <section class="section">
     <div class="container">
@@ -42,22 +61,4 @@ const posts = sortByDateDesc(await getCollection('news'));
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>From Facebook</h2>
-        <Bilingual class="bilingual-stacked">
-          <Fragment slot="en">
-            Live posts from{' '}
-            <a href={site.facebookPageUrl} target="_blank" rel="noopener noreferrer">our Facebook page</a>.
-          </Fragment>
-          <Fragment slot="uk">
-            Актуальні дописи з{' '}
-            <a href={site.facebookPageUrl} target="_blank" rel="noopener noreferrer">нашої сторінки Facebook</a>.
-          </Fragment>
-        </Bilingual>
-      </div>
-      <FacebookFeed height={1000} />
-    </div>
-  </section>
 </BaseLayout>

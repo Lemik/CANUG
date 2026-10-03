@@ -4,8 +4,8 @@ title_uk: "Доставка автомобілів в Україну"
 summary_en: "Help us ship donated vehicles to medics and volunteers in Ukraine."
 summary_uk: "Допоможіть доставити передані автомобілі медикам і волонтерам в Україні."
 status: active
-goal: 4500
-raised: 2810
+goal: 10000
+raised: 4000
 currency: CAD
 featured: true
 image: /img/car1.jpg

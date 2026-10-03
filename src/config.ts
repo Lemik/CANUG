@@ -23,6 +23,5 @@ export const navItems = [
   { href: '/news/', en: 'News', uk: 'Новини' },
   { href: '/projects/', en: 'Projects', uk: 'Проєкти' },
   { href: '/donate/', en: 'Donate', uk: 'Підтримати' },
-  { href: '/nanaimo/', en: 'Nanaimo', uk: 'Нанаймо' },
   { href: '/contact/', en: 'Contact', uk: 'Контакти' },
 ] as const;
