@@ -2,7 +2,6 @@
 import type { CollectionEntry } from 'astro:content';
 import Bilingual from './Bilingual.astro';
 import { formatMoney, progressPercent } from '../lib/content';
-import { site } from '../config';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -11,7 +10,6 @@ interface Props {
 const { project } = Astro.props;
 const { data } = project;
 const pct = progressPercent(data.raised, data.goal);
-const donateUrl = data.stripePaymentLink ?? site.stripePaymentLink;
 ---
 
 <article class="card">
@@ -46,8 +44,8 @@ const donateUrl = data.stripePaymentLink ?? site.stripePaymentLink;
     {
       data.status === 'active' && (
         <p style="margin-top: auto; margin-bottom: 0;">
-          <a class="cta" href={donateUrl} target="_blank" rel="noopener noreferrer">
-            Donate · <span lang="uk">Підтримати</span>
+          <a class="cta" href="/donate/#how-to-donate">
+            Donate now · <span lang="uk">Підтримати зараз</span>
           </a>
         </p>
       )

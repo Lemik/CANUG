@@ -1,122 +1,124 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Bilingual from '../../components/Bilingual.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
-import { getCollection } from 'astro:content';
-import { activeProjects } from '../../lib/content';
 import { site } from '../../config';
-
-const active = activeProjects(await getCollection('projects'));
 ---
 
 <BaseLayout title="Donate">
   <section class="page-hero">
     <div class="container">
       <Bilingual heading>
-        <Fragment slot="en">Support our community</Fragment>
-        <Fragment slot="uk">Підтримайте громаду</Fragment>
+        <Fragment slot="en">A container for Ukraine</Fragment>
+        <Fragment slot="uk">Контейнер для України</Fragment>
       </Bilingual>
       <Bilingual>
         <Fragment slot="en">
-          Your contribution helps run events, welcome newcomers, and deliver aid projects — including vehicles for Ukraine.
+          We are collecting two vehicles, generators, and clothing. Everything in this drive is packed into one container and sent to Ukraine.
         </Fragment>
         <Fragment slot="uk">
-          Ваш внесок допомагає проводити події, підтримувати новоприбулих і реалізовувати проєкти допомоги — зокрема доставку автомобілів в Україну.
+          Ми збираємо два автомобілі, генератори та одяг. Усе це їде в Україну одним контейнером.
         </Fragment>
       </Bilingual>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="feature-strip">
-        <Bilingual heading>
-          <Fragment slot="en">Donate securely with Stripe</Fragment>
-          <Fragment slot="uk">Безпечна пожертва через Stripe</Fragment>
-        </Bilingual>
+  <section class="section" id="what-we-collect">
+    <div class="container collect">
+      <article class="collect-block">
+        <header class="collect-head">
+          <p class="collect-kicker">01 · Vehicles · <span lang="uk">Автомобілі</span></p>
+          <h2>Two vehicles ready to ship <span lang="uk" class="appeal-uk">Два автомобілі готові до відправки</span></h2>
+        </header>
+        <div class="collect-photos">
+          <figure>
+            <img src="/img/donate/ford-expedition.jpg" alt="Silver Ford Expedition parked beside a road, with a Canadian flag behind it" width="1024" height="768" />
+            <figcaption>Ford Expedition</figcaption>
+          </figure>
+          <figure>
+            <img src="/img/car2.png" alt="Grey Range Rover parked on a gravel road among trees" width="1024" height="768" />
+            <figcaption>Range Rover</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="collect-block">
+        <header class="collect-head">
+          <p class="collect-kicker">02 · Generators · <span lang="uk">Генератори</span></p>
+          <h2>Power for when the lights go out <span lang="uk" class="appeal-uk">Світло, коли зникає електрика</span></h2>
+        </header>
+        <div class="collect-photos">
+          <figure>
+            <img src="/img/appeal/generator-yardworks.jpg" alt="Green Yardworks 3500 watt portable generator" width="1024" height="768" />
+            <figcaption>Yardworks 3500 W</figcaption>
+          </figure>
+          <figure>
+            <img src="/img/appeal/generator-portable.jpg" alt="Yellow portable generator with a black frame" width="1024" height="768" />
+            <figcaption>Portable generator</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="collect-block collect-clothing">
+        <header class="collect-head">
+          <p class="collect-kicker">03 · Clothing · <span lang="uk">Одяг</span></p>
+          <h2>Clothes for families <span lang="uk" class="appeal-uk">Одяг для родин</span></h2>
+        </header>
         <Bilingual>
           <Fragment slot="en">
-            You will be taken to Stripe’s hosted checkout to complete your donation.
+            Warm clothes and everyday wear, packed with the vehicles and generators in the same container.
           </Fragment>
           <Fragment slot="uk">
-            Вас буде перенаправлено на захищену сторінку Stripe, щоб завершити пожертву.
+            Теплий і повсякденний одяг їде в тому самому контейнері, що й автомобілі та генератори.
           </Fragment>
         </Bilingual>
-        <p style="margin-top: 1rem; margin-bottom: 0;">
-          <a
-            class="cta cta-accent"
-            href={site.stripePaymentLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Donate now · <span lang="uk">Підтримати зараз</span>
-          </a>
-        </p>
-      </div>
+      </article>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="how-to-donate">
     <div class="container">
       <div class="section-header">
         <Bilingual heading>
-          <Fragment slot="en">How donations help</Fragment>
-          <Fragment slot="uk">Як допомагають внески</Fragment>
+          <Fragment slot="en">How to donate</Fragment>
+          <Fragment slot="uk">Як підтримати</Fragment>
         </Bilingual>
       </div>
-      <div class="panel">
-        <Bilingual>
-          <Fragment slot="en">
-            <ul class="prose-list">
-              <li>Community gatherings and cultural events</li>
-              <li>Support for newcomers in Nanaimo</li>
-              <li>Materials, outreach, and project logistics</li>
-              <li>Vehicle preparation and delivery to Ukraine</li>
-            </ul>
-          </Fragment>
-          <Fragment slot="uk">
-            <ul class="prose-list">
-              <li>Зустрічі громади та культурні події</li>
-              <li>Підтримка новоприбулих у Нанаймо</li>
-              <li>Матеріали, комунікації та логістика проєктів</li>
-              <li>Підготовка та доставка автомобілів в Україну</li>
-            </ul>
-          </Fragment>
-        </Bilingual>
+      <div class="give-grid">
+        <article class="transfer-card">
+          <p class="collect-kicker">Money · <span lang="uk">Кошти</span></p>
+          <h2>
+            Send an e-transfer
+            <span lang="uk" class="appeal-uk">Надішліть e-transfer</span>
+          </h2>
+          <Bilingual>
+            <Fragment slot="en">
+              Send the e-transfer directly to this address. Use it as the recipient email.
+            </Fragment>
+            <Fragment slot="uk">
+              Надішліть e-transfer прямо на цю адресу. Вкажіть її як пошту отримувача.
+            </Fragment>
+          </Bilingual>
+          <a class="transfer-address" href={`mailto:${site.email}`}>{site.email}</a>
+          <p class="transfer-note">
+            <a class="cta cta-accent" href={`mailto:${site.email}?subject=${encodeURIComponent('E-transfer for the Ukraine container')}`}>
+              Email us · <span lang="uk">Напишіть нам</span>
+            </a>
+          </p>
+        </article>
+        <article class="panel give-side">
+          <h3 class="card-title">
+            Generators and clothing
+            <span lang="uk" class="appeal-uk">Генератори та одяг</span>
+          </h3>
+          <Bilingual>
+            <Fragment slot="en">Have a generator or clothes to give? Contact us and we will arrange pickup or drop-off.</Fragment>
+            <Fragment slot="uk">Маєте генератор або одяг? Звʼяжіться з нами, і ми домовимося про забір або передачу.</Fragment>
+          </Bilingual>
+          <p style="margin: 0;">
+            <a class="cta" href="/contact/">Contact · <span lang="uk">Контакти</span></a>
+          </p>
+        </article>
       </div>
-    </div>
-  </section>
-
-  {
-    active.length > 0 && (
-      <section class="section">
-        <div class="container">
-          <div class="section-header">
-            <Bilingual heading>
-              <Fragment slot="en">Give to a project</Fragment>
-              <Fragment slot="uk">Підтримати проєкт</Fragment>
-            </Bilingual>
-          </div>
-          <div class="card-grid">
-            {active.map((project) => (
-              <ProjectCard project={project} />
-            ))}
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  <section class="section">
-    <div class="container panel">
-      <Bilingual>
-        <Fragment slot="en">
-          Prefer email? Write to <a href={`mailto:${site.email}`}>{site.email}</a> about e-transfers or other ways to help.
-        </Fragment>
-        <Fragment slot="uk">
-          Хочете написати? Звертайтеся на <a href={`mailto:${site.email}`}>{site.email}</a> щодо e-transfer або інших способів допомоги.
-        </Fragment>
-      </Bilingual>
     </div>
   </section>
 </BaseLayout>
