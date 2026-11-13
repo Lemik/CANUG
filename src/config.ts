@@ -9,9 +9,9 @@ export const site = {
   facebookPageUrl: 'https://www.facebook.com/profile.php?id=61588431459687',
   /**
    * Stripe Payment Link from the Stripe Dashboard (Payment Links).
-   * Replace this placeholder with your live link before promoting donate CTAs.
+   * Test-mode link. Swap for the live link before promoting donate CTAs.
    */
-  stripePaymentLink: 'https://buy.stripe.com/test_REPLACE_WITH_YOUR_PAYMENT_LINK',
+  stripePaymentLink: 'https://buy.stripe.com/test_dRmaEQ3W4cb50c86OH87K00',
   incorporationNumber: 'S0082571',
   locationEn: 'Nanaimo, British Columbia, Canada',
   locationUk: 'Нанаймо, Британська Колумбія, Канада',
